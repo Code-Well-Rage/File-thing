@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int offsetcalc(char input);
+int offsetcalc(char input[]);
 
 char decryption_E(char outputF[]);
 
@@ -13,18 +13,24 @@ char decryption_O(char outputF[]);
 int main()
 {
     
-    int offset = 0;
-    int *input.pt;
+    int offsetE = 0;
+    int offsetT = 0;
+    int offsetA = 0;
+    int offsetO = 0;
+    int *inputpt;
     char input[];
     char output[];
     input[] = "exxegoexsrgi" ;
-    *input.pt = input[];
+    *inputpt = input[];
     
 }
 
-int offsetcalc(int input){
+int offsetcalc(char input[]){
     
     int mostcommon;
-    input = *input.pt
+    int p;
+    input = *inputpt;
+    
+    
     
 }
