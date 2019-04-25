@@ -6,7 +6,7 @@
 int main()
 {
     //counting and assigning the length of the encrypted array to the input array
-    char initialInput[] = "exxegoexsrgi";           
+    char initialInput[] = "zsszbjzsrtmqhrd";           
     int length;
         length = strlen(initialInput);
         printf("The cypher is %d element/s long\n", length);
@@ -46,71 +46,76 @@ int main()
     /*A repeated if statement based off the repition statement above that finds the largest element 
     and its location, which is then applied back to the original ASCII version of the Cypher to find 
     the element that will be used to find the offset from E (and then offset from T, A & O)*/
-    int maxcount;
-    maxcount = repeatcount[0];
-    int elementNum;
-    int ogASCIINum;
-    int ASCIIe = 101;
-    int offset;
-    int maxASCIIletter;
+    double ASCIIaeot[4] = {97, 101, 111, 116};
+    int aeot;
     
-    for(int repeatNum = 0 ; repeatNum < length ; repeatNum ++){
+    for(aeot = 0; aeot < 4; aeot++);{
+        int maxcount;
+        maxcount = repeatcount[0];
+        int elementNum;
+        int ogASCIINum;
+        int offset;
+        int maxASCIIletter;
+    
+        for(int repeatNum = 0 ; repeatNum < length ; repeatNum ++){
 
-        if (maxcount < repeatcount[repeatNum]){
-            maxcount = repeatcount[repeatNum];
-            elementNum = repeatNum;
-        }
-
-            
-    }
-    
-    maxASCIIletter = maxcount;
-    ogASCIINum = ASCIIvalues[elementNum];
-    offset = ASCIIe - ogASCIINum;
-    printf("The most common lettter repeats %d time/s \n", maxASCIIletter);
-    
-    char solutionASCII[length];
-    
-    if (offset <= 0){
-        
-        for(int n = 0; n < length; n ++){
-            
-            solutionASCII[n] = ASCIIvalues[n] + abs(offset);
-            if (solutionASCII[n] > 122){
-                
-                solutionASCII[n] = solutionASCII[n] - 26;
-                
+            if (maxcount < repeatcount[repeatNum]){
+                maxcount = repeatcount[repeatNum];
+                elementNum = repeatNum;
             }
+
             
         }
+    
+        maxASCIIletter = maxcount;
+        ogASCIINum = ASCIIvalues[elementNum];
+        offset = ASCIIaeot[aeot] - ogASCIINum;
+        printf("The most common lettter repeats %d time/s \n", maxASCIIletter);
+    
+        char solutionASCII[length];
+    
+        if (offset <= 0){
         
-    }
-    else if (offset > 0){
-        
-         for(int n = 0; n < length; n ++){
+            for(int n = 0; n < length; n ++){
             
-            solutionASCII[n] = ASCIIvalues[n] - abs(offset);
-            if (solutionASCII[n] < 97){
+                solutionASCII[n] = ASCIIvalues[n] + abs(offset);
+                if (solutionASCII[n] > 122){
                 
-                solutionASCII[n] = solutionASCII[n] + 26;
+                    solutionASCII[n] = solutionASCII[n] - 26;
                 
+                }
+            
             }
         
         }
+        else if (offset > 0){
+        
+            for(int n = 0; n < length; n ++){
+            
+                solutionASCII[n] = ASCIIvalues[n] - abs(offset);
+                if (solutionASCII[n] < 97){
+                
+                    solutionASCII[n] = solutionASCII[n] + 26;
+                
+                }
+        
+            }
 
-    }
+        }
     
-    for(int counter = 0 ; counter < length ; counter ++){
+        for(int counter = 0 ; counter < length ; counter ++){
         
-        solutionASCII[counter] = (char)solutionASCII[counter];
+            solutionASCII[counter] = (char)solutionASCII[counter];
         
-    }
+        }
     
-    printf("The Decrypted Cypher is:\n");
-     for(int counter = 0 ; counter < length ; counter ++){
+        printf("The Decrypted Cypher is:\n");
+            for(int counter = 0 ; counter < length ; counter ++){
         
-        printf("%c", (char)solutionASCII[counter]);
+                printf("%c", (char)solutionASCII[counter]);
         
-    }
+            }
     
+    }
+
 }
