@@ -25,7 +25,7 @@ int main()
         ASCIIvalues[counter] = (int)input[counter];
         
     }
-    printf("%d\n", ASCIIvalues[0]); //test print, delete later
+    
     //An if inside a for, inside a for statement used to find any copies of the ASCII letters in the array
     char repeatcount[length];
     int Zeroer;
@@ -49,21 +49,17 @@ int main()
         }
         
     }
-    printf("%d\n", repeatcount[0]); //test print, delete later
+    
     /*A repeated if statement based off the repition statement above that finds the largest element 
     and its location, which is then applied back to the original ASCII version of the Cypher to find 
     the element that will be used to find the offset from E (and then offset from T, A & O)*/
-    double ASCIIaeot[4] = {97, 101, 111, 116};
-    
-    int n = 0;
-    
-    for(int aeot = 0; aeot < 4; aeot++);{
+    int offsetbase = 97;
+    do{
         int maxcount;
         maxcount = repeatcount[0];
         int elementNum;
         int ogASCIINum;
         int offset;
-        int maxASCIIletter;
     
         for(int repeatNum = 0 ; repeatNum < length ; repeatNum ++){
 
@@ -75,13 +71,8 @@ int main()
             
         }
     
-        maxASCIIletter = maxcount;
         ogASCIINum = ASCIIvalues[elementNum];
-        offset = ASCIIaeot[n++] - ogASCIINum;
-        printf("The most common lettter repeats %d time/s \n", maxASCIIletter);//this and the next two lines are all test code
-        printf("The elements position is %d", elementNum);                      
-        printf("\nAnd the ASCII code for the element is %d\n", ogASCIINum);     
-        //all good up to here
+        offset = offsetbase - ogASCIINum;
         char solutionASCII[length];
         printf("The offset is %d\n", offset);
         
@@ -121,12 +112,14 @@ int main()
         }
     
         printf("The Decrypted Cipher is:\n");
-            for(int counter = 0 ; counter < length ; counter ++){
+        for(int counter = 0 ; counter < length ; counter ++){
         
                 printf("%c", (char)solutionASCII[counter]);
         
-            }
-    
-    }
+        }
+    printf("\n\n");
+    printf("The base letter was %c\n", (char)offsetbase);
+    offsetbase ++;
+    }while(offsetbase < 123);
 
 }
