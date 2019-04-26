@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int main()
+int second()
 {
     
     float x0 = 1.47;

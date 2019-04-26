@@ -9,7 +9,7 @@ int main()
     char initialInput[] = "zsszbjzsrtmqhrd";           
     int length;
         length = strlen(initialInput);
-        printf("The cypher is %d element/s long\n", length);
+        printf("The cipher is %d element/s long\n", length);
     char input[length];
     for(int counter = 0 ; counter < length ; counter ++){
         
@@ -28,6 +28,13 @@ int main()
     printf("%d\n", ASCIIvalues[0]); //test print, delete later
     //An if inside a for, inside a for statement used to find any copies of the ASCII letters in the array
     char repeatcount[length];
+    int Zeroer;
+    
+    for(Zeroer = 0 ; Zeroer < length ; Zeroer ++){
+        
+        repeatcount[Zeroer] = 0;
+        
+    }
     
     for(int original = 0 ; original < length ; original ++){
         
@@ -47,9 +54,10 @@ int main()
     and its location, which is then applied back to the original ASCII version of the Cypher to find 
     the element that will be used to find the offset from E (and then offset from T, A & O)*/
     double ASCIIaeot[4] = {97, 101, 111, 116};
-    int aeot;
     
-    for(aeot = 0; aeot < 4; aeot++);{
+    int n = 0;
+    
+    for(int aeot = 0; aeot < 4; aeot++);{
         int maxcount;
         maxcount = repeatcount[0];
         int elementNum;
@@ -69,19 +77,22 @@ int main()
     
         maxASCIIletter = maxcount;
         ogASCIINum = ASCIIvalues[elementNum];
-        offset = ASCIIaeot[aeot] - ogASCIINum;
-        printf("The most common lettter repeats %d time/s \n", maxASCIIletter);
-    
+        offset = ASCIIaeot[n++] - ogASCIINum;
+        printf("The most common lettter repeats %d time/s \n", maxASCIIletter);//this and the next two lines are all test code
+        printf("The elements position is %d", elementNum);                      
+        printf("\nAnd the ASCII code for the element is %d\n", ogASCIINum);     
+        //all good up to here
         char solutionASCII[length];
-    
+        printf("The offset is %d\n", offset);
+        
         if (offset <= 0){
         
             for(int n = 0; n < length; n ++){
             
-                solutionASCII[n] = ASCIIvalues[n] + abs(offset);
-                if (solutionASCII[n] > 122){
+                solutionASCII[n] = ASCIIvalues[n] + offset;
+                if (solutionASCII[n] < 97){
                 
-                    solutionASCII[n] = solutionASCII[n] - 26;
+                    solutionASCII[n] = solutionASCII[n] + 26;
                 
                 }
             
@@ -92,10 +103,10 @@ int main()
         
             for(int n = 0; n < length; n ++){
             
-                solutionASCII[n] = ASCIIvalues[n] - abs(offset);
-                if (solutionASCII[n] < 97){
+                solutionASCII[n] = ASCIIvalues[n] + abs(offset);
+                if (solutionASCII[n] > 122){
                 
-                    solutionASCII[n] = solutionASCII[n] + 26;
+                    solutionASCII[n] = solutionASCII[n] - 26;
                 
                 }
         
@@ -109,7 +120,7 @@ int main()
         
         }
     
-        printf("The Decrypted Cypher is:\n");
+        printf("The Decrypted Cipher is:\n");
             for(int counter = 0 ; counter < length ; counter ++){
         
                 printf("%c", (char)solutionASCII[counter]);
