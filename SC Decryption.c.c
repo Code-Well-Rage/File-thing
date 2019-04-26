@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int third()
+int main3()
 {
     printf("hello, world\n");
     return 0;
