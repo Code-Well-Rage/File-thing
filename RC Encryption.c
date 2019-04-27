@@ -2,7 +2,7 @@
 #include<string.h>
 #include<math.h>
 #include<stdlib.h>
-//no clue about the main statement, something about reaching a non-void funciton although the code for the RC Encryption is complete
+//no clue about the main statement, something about reaching a non-void function although the code for the RC Encryption is complete
 int main2(){
     
     char initialInput[] = "attackatsunrise";           
