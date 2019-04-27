@@ -1,43 +1,74 @@
 #include<stdio.h>
-
-int main2()
-{
+#include<string.h>
+#include<math.h>
+#include<stdlib.h>
+//no clue about the main statement, something about reaching a non-void funciton although the code for the RC Encryption is complete
+int main2(){
     
-    float x0 = 1.47;
-    float x1 = 0.14;
-    float xn;
-    int Sum = 0;
-        printf(" 0 %f\n", x0);
-    for ( int n = 1; n <= 10; n++) {
-
-        {
+    char initialInput[] = "attackatsunrise";           
+    int length;
+        length = strlen(initialInput);
+        printf("The cipher is %d element/s long\n", length);
+    char input[length];
+    
+    for(int counter = 0 ; counter < length ; counter ++){
         
-        xn = 0.8 * x1 + 0.2 * x0;
-        x0 = x1;
-        x1 = xn;
-        printf(" %d %f\n", n, x0);
-        if ( (x1 - x0) >= 0){
-            Sum = Sum + 2;
-        }
-        else if ((x1 - x0) < 0) {
-            Sum = Sum - 2;
-        }
+        input[counter] = initialInput[counter];
+        
+    }
+    
+    char ASCIIvalues[length];
+    /*defines the arrays and identifies the length, provided with the length the letters inputted are converted 
+    into their ASCII decimal numbers*/
+   
+    for(int counter = 0 ; counter < length ; counter ++){
+        
+        ASCIIvalues[counter] = (int)input[counter];
+        
+    }
+    
+    printf("Please press enter after identifying the shift you desire for the encrypted cipher:\n");  
+    int desiredshift = 6;
+    //scanf("%d", &desiredshift); //for some reason the scanf statement isnt working...
+    
+    if (desiredshift <= 0){
+        for(int n = 0; n < length; n ++){
+            
+            ASCIIvalues[n] = (int)ASCIIvalues[n] + desiredshift;
+            if (ASCIIvalues[n] < 97){
+                
+                ASCIIvalues[n] = (int)ASCIIvalues[n] + 26;
+                
+            }
         
         }
     
     }
-    if (Sum == 20){
-        printf("dx/dn is always positive or zero");
-    }
     
-    else if (Sum == -20){
-        printf("dx/dn is always negative");
+    else if (desiredshift > 0){
+        
+        for(int n = 0; n < length; n ++){
+            
+            ASCIIvalues[n] = (int)ASCIIvalues[n] + abs(desiredshift);
+            if (ASCIIvalues[n] > 122){
+                
+                ASCIIvalues[n] = (int)ASCIIvalues[n] - 26;
+                
+            }
+        
+        }
+
     }
+
+
+    printf("The Encrypted Cipher with a shift of %d, is:\n", desiredshift);
     
-    else if (Sum < 20){
-        printf("The sign of dx/dn varies");
+    for(int counter = 0 ; counter < length ; counter ++){
+        
+        printf("%c", (char)ASCIIvalues[counter]);
+        
     }
-    
-    return 0;
+
+
 
 }
