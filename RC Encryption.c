@@ -5,7 +5,7 @@
 //no clue about the main statement, something about reaching a non-void function although the code for the RC Encryption is complete
 int main2(){
     
-    char initialInput[] = "attackatsunrise";           
+    char initialInput[] = "attackatsunrise";//should be scanf()
     int length;
         length = strlen(initialInput);
         printf("The cipher is %d element/s long\n", length);

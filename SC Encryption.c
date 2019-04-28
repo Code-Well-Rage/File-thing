@@ -1,23 +1,33 @@
+
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
 #include<stdlib.h>
 
-int main4(){
-    
-    #include<stdio.h>
-#include<string.h>
-#include<math.h>
-#include<stdlib.h>
-
-int main(){
-
-    char initialInput[] = "attackatsunrise";           
+int main4()
+{
+ 
+    //counting and assigning the length of the encrypted array to the input array
     int length;
-        length = strlen(initialInput);
-        printf("The cipher is %d element/s long\n", length);
-    char input[length];
+    printf("Please enter how many elements there are in the code including any special characters ie. spaces, hyphens, apostrophes etc. :\n");
+    scanf("%d", &length);
+    printf("%d\n\n", length);
+    char initialInput[length];
     
+    for(int counter = 0 ; counter < length ; counter ++){
+
+    scanf("%c", &initialInput[counter]);
+
+    }
+    printf("The inputed code is:\n");
+    for(int counter = 0 ; counter < length ; counter ++){ //test code
+
+    printf("%c", initialInput[counter]);
+
+    }                                                     
+    printf("\n\n");//test code
+
+    char input[length];
     for(int counter = 0 ; counter < length ; counter ++){
         
         input[counter] = initialInput[counter];
@@ -25,58 +35,75 @@ int main(){
     }
     
     char ASCIIvalues[length];
-    /*defines the arrays and identifies the length, provided with the length the letters inputted are converted 
-    into their ASCII decimal numbers*/
-   
     for(int counter = 0 ; counter < length ; counter ++){
         
         ASCIIvalues[counter] = (int)input[counter];
         
     }
     
-    printf("Please press enter after identifying the shift you desire for the encrypted cipher:\n");  
-    int desiredshift = 6;
-    //scanf("%d", &desiredshift); //for some reason the scanf statement isnt working...
+    char alphabet[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char subsitutionAlphabet[26];
     
-    if (desiredshift <= 0){
-        for(int n = 0; n < length; n ++){
-            
-            ASCIIvalues[n] = (int)ASCIIvalues[n] + desiredshift;
-            if (ASCIIvalues[n] < 97){
-                
-                ASCIIvalues[n] = (int)ASCIIvalues[n] + 26;
-                
-            }
+    printf("Please enter the letter you wish to associate with the following alphabetic letters:\n");
+    
+    for(int counter = 0; counter < 26; counter++){
         
-        }
-    
+        scanf("%c", &subsitutionAlphabet[counter]);
+        printf("%c = %c\n", (char)alphabet[counter], (char)subsitutionAlphabet[counter]);
+        
     }
     
-    else if (desiredshift > 0){
+    char repeatcount[length];
+    int Zeroer;
+    
+    for(Zeroer = 0 ; Zeroer < length ; Zeroer ++){
         
-        for(int n = 0; n < length; n ++){
-            
-            ASCIIvalues[n] = (int)ASCIIvalues[n] + abs(desiredshift);
-            if (ASCIIvalues[n] > 122){
-                
-                ASCIIvalues[n] = (int)ASCIIvalues[n] - 26;
-                
-            }
+        repeatcount[Zeroer] = 0;
         
-        }
-
     }
-
-
-    printf("The Encrypted Cipher with a shift of %d, is:\n", desiredshift);
+    
+    for(int original = 0 ; original < length ; original ++){
+        
         for(int counter = 0 ; counter < length ; counter ++){
-        
-                printf("%c", (char)ASCIIvalues[counter]);
+            
+            if (ASCIIvalues[original] == ASCIIvalues[counter]){
+                
+                repeatcount[original] ++;
+                
+            }
         
         }
+        
+    }
+        
+    for(int original = 0 ; original < length ; original ++){
+        
+        for(int counter = 0 ; counter < 26 ; counter ++){
+            
+            if(ASCIIvalues[original] == alphabet[counter] && repeatcount[original] > 1){
+                
+                ASCIIvalues[original] = subsitutionAlphabet[counter];
+                repeatcount[original] = repeatcount[original] - 1;
+                break ;
 
-
-
-}
+            }
+            
+            else if(ASCIIvalues[original] == alphabet[counter]){
+                
+                ASCIIvalues[original] = subsitutionAlphabet[counter];
+                break ;
+                
+            }
+        }
+        
+    }
     
+    printf("\nThe encrypted substitution cipher is:\n");
+    for(int counter = 0 ; counter < length ; counter ++){
+        
+        printf("%c", (char)ASCIIvalues[counter]);    //change to %c and (char) later
+        
+    }
+
+ 
 }
