@@ -6,11 +6,6 @@
 int main3()
 {
  
-    //counting and assigning the length of the encrypted array to the input array
-    int length;
-    printf("Please enter how many elements there are in the cipher including any special characters ie. spaces, hyphens, apostrophes etc. :\n");
-    scanf("%d", &length);
-    printf("%d\n\n", length);
     char initialInput[length];
     
     for(int counter = 0 ; counter < length ; counter ++){

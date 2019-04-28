@@ -6,7 +6,7 @@
 int main()
 {
     //counting and assigning the length of the encrypted array to the input array
-    char initialInput[] = "zsszbjzsrtmqhrd";           
+    char initialInput[] = "ZSSZBJ ZS RTMQHRD";           
     int length;
         length = strlen(initialInput);
         printf("The cipher is %d element/s long\n", length);
@@ -40,7 +40,11 @@ int main()
         
         for(int counter = 0 ; counter < length ; counter ++){
             
-            if (ASCIIvalues[original] == ASCIIvalues[counter]){
+            if (ASCIIvalues[original] > 90 || ASCIIvalues[original] < 65){
+                break ;
+            }
+            
+            else if (ASCIIvalues[original] == ASCIIvalues[counter]){
                 
                 repeatcount[original] ++;
                 
@@ -53,7 +57,7 @@ int main()
     /*A repeated if statement based off the repition statement above that finds the largest element 
     and its location, which is then applied back to the original ASCII version of the Cypher to find 
     the element that will be used to find the offset from E (and then offset from T, A & O)*/
-    int offsetbase = 97;
+    int offsetbase = 85;
     do{
         int maxcount;
         maxcount = repeatcount[0];
@@ -80,29 +84,49 @@ int main()
         
             for(int n = 0; n < length; n ++){
             
-                solutionASCII[n] = ASCIIvalues[n] + offset;
-                if (solutionASCII[n] < 97){
+                if (ASCIIvalues[n] > 90 || ASCIIvalues[n] < 65){
+                
+                break ;
+                
+                }
+                
+                else {
+                    solutionASCII[n] = ASCIIvalues[n] + offset;
+                    if (solutionASCII[n] < 65){
                 
                     solutionASCII[n] = solutionASCII[n] + 26;
                 
-                }
+                    }  
             
-            }
+                }
+        
+            }   
         
         }
+
         else if (offset > 0){
         
             for(int n = 0; n < length; n ++){
-            
-                solutionASCII[n] = ASCIIvalues[n] + abs(offset);
-                if (solutionASCII[n] > 122){
                 
-                    solutionASCII[n] = solutionASCII[n] - 26;
+                if (ASCIIvalues[n] > 90 || ASCIIvalues[n] < 65){
+                
+                break ;
                 
                 }
+                
+                else {
+            
+                    solutionASCII[n] = ASCIIvalues[n] + abs(offset);
+                    if (solutionASCII[n] > 90){
+                
+                        solutionASCII[n] = solutionASCII[n] - 26;
+                
+                    }
         
-            }
+                }
 
+            }
+            
         }
     
         for(int counter = 0 ; counter < length ; counter ++){
@@ -120,6 +144,6 @@ int main()
     printf("\n\n");
     printf("The base letter was %c\n", (char)offsetbase);
     offsetbase ++;
-    }while(offsetbase < 123);
+    }while(offsetbase < 91);
 
 }

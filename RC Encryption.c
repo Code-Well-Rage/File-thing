@@ -5,10 +5,14 @@
 //no clue about the main statement, something about reaching a non-void function although the code for the RC Encryption is complete
 int main2(){
     
-    char initialInput[] = "attackatsunrise";//should be scanf()
-    int length;
-        length = strlen(initialInput);
-        printf("The cipher is %d element/s long\n", length);
+    char initialInput[length];
+    
+    for(int counter = 0 ; counter < length ; counter ++){
+
+    scanf("%c", &initialInput[counter]);
+
+    }
+    
     char input[length];
     
     for(int counter = 0 ; counter < length ; counter ++){
@@ -35,7 +39,7 @@ int main2(){
         for(int n = 0; n < length; n ++){
             
             ASCIIvalues[n] = (int)ASCIIvalues[n] + desiredshift;
-            if (ASCIIvalues[n] < 97){
+            if (ASCIIvalues[n] < 65){
                 
                 ASCIIvalues[n] = (int)ASCIIvalues[n] + 26;
                 
@@ -50,7 +54,7 @@ int main2(){
         for(int n = 0; n < length; n ++){
             
             ASCIIvalues[n] = (int)ASCIIvalues[n] + abs(desiredshift);
-            if (ASCIIvalues[n] > 122){
+            if (ASCIIvalues[n] > 90){
                 
                 ASCIIvalues[n] = (int)ASCIIvalues[n] - 26;
                 
