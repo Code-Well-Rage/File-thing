@@ -17,7 +17,7 @@ int main(){
     //The user is made to imput the length
     //RC cant account for elements that arnt letters
     //RC need only upper case letter input
-    printf("Welcome to the cipher decoding/encoding machine(CDEM).\n");
+    printf("Welcome to the cipher decoding/encoding machine(CDEM). (All inputed code must be UPPER CASE)\n");
     printf("Please enter the length of the message you wish to utalise in the CDEM (length = total count or elements):\n");
     scanf("%d", &length);
     printf("The length of the message is %d elements long.\n", length);
@@ -227,6 +227,7 @@ int main(){
             printf("%c", (char)ASCIIvalues[counter]); // prints the encrypted cipher for the user
         
         }
+        printf("\n");
         
     }
     
@@ -331,8 +332,8 @@ int main(){
         
         }
 
-        
-        }
+        printf("\n");
+    }
         
     
     
@@ -438,8 +439,12 @@ int main(){
         
         }
 
+        printf("\n");
         
-        }
+    }
+    
+    
+    
         else if(option == 5){
         
             printf("Error 501 : Code Not Implemented");
