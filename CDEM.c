@@ -7,6 +7,12 @@ int main(){
     
     int length;
     int option;
+    FILE *Input;
+    Input = fopen("Input", "r");
+    if(Input == NULL){
+        perror("fopen()");
+        return 1;
+    }
     printf("Welcome to the cipher decoding/encoding machine(CDEM).\n");
     printf("Please enter the length of the message you wish to utalise in the CDEM (length = total count or elements):\n");
     scanf("%d", &length);
@@ -25,7 +31,7 @@ int main(){
     
         for(int counter = 0 ; counter < length ; counter ++){
 
-        scanf("%c", &initialInput[counter]);
+        fscanf(Input, "%c", &initialInput[counter]);
 
         }
     
@@ -106,7 +112,7 @@ int main(){
                     }
             
                 }
-        
+       
             }
             else if (offset > 0){
         
@@ -149,7 +155,7 @@ int main(){
     
     for(int counter = 0 ; counter < length ; counter ++){
 
-    scanf("%c", &initialInput[counter]);
+    fscanf(Input, "%c", &initialInput[counter]);
 
     }
     
@@ -225,7 +231,7 @@ int main(){
     
     for(int counter = 0 ; counter < length ; counter ++){
 
-    scanf("%c", &initialInput[counter]);
+    fscanf(Input, "%c", &initialInput[counter]);
 
     }
     printf("The Encrypted Cipher Is:\n");
@@ -257,7 +263,8 @@ int main(){
     
     for(int counter = 0; counter < 26; counter++){
         
-        scanf("%c", &subsitutionAlphabet[counter]);
+        fscanf(Input, "%c", &subsitutionAlphabet[counter]);
+        //scanf("%c", &subsitutionAlphabet[counter]);
         printf("%c = %c\n", (char)subsitutionAlphabet[counter], (char)alphabet[counter]);
         
     }
@@ -324,7 +331,7 @@ int main(){
     
     for(int counter = 0 ; counter < length ; counter ++){
 
-    scanf("%c", &initialInput[counter]);
+    fscanf(Input, "%c", &initialInput[counter]);
 
     }
     printf("The Inputed Message Is:\n");
@@ -356,7 +363,8 @@ int main(){
     
     for(int counter = 0; counter < 26; counter++){
         
-        scanf("%c", &subsitutionAlphabet[counter]);
+        fscanf(Input, "%c", &subsitutionAlphabet[counter]);
+        //scanf("%c", &subsitutionAlphabet[counter]);
         printf("%c = %c\n", (char)alphabet[counter], (char)subsitutionAlphabet[counter]);
         
     }

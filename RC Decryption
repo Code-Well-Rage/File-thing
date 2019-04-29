@@ -57,7 +57,7 @@ int main()
     /*A repeated if statement based off the repition statement above that finds the largest element 
     and its location, which is then applied back to the original ASCII version of the Cypher to find 
     the element that will be used to find the offset from E (and then offset from T, A & O)*/
-    int offsetbase = 85;
+    int offsetbase = 65;
     do{
         int maxcount;
         maxcount = repeatcount[0];
