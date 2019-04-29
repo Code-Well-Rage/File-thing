@@ -4,7 +4,7 @@
 #include<stdlib.h>
 
 int main(){
-    
+    //open of Input file and its initialisation (thanks callum c3329280)
     int length;
     int option;
     FILE *Input;
@@ -13,6 +13,7 @@ int main(){
         perror("fopen()");
         return 1;
     }
+    //User interface that takes in the length of the message aswell as the users option of code
     printf("Welcome to the cipher decoding/encoding machine(CDEM).\n");
     printf("Please enter the length of the message you wish to utalise in the CDEM (length = total count or elements):\n");
     scanf("%d", &length);
@@ -26,15 +27,16 @@ int main(){
     scanf("%d", &option);
     
     if(option == 1){
-        
+        /*Rotaional Cipher which takes in all-capital letter code without any non-letter elements and outputs all
+        26 possiblities of Cipher shift to the user*/ 
         char initialInput[length];
     
         for(int counter = 0 ; counter < length ; counter ++){
 
-        fscanf(Input, "%c", &initialInput[counter]);
-
-        }
-    
+        fscanf(Input, "%c", &initialInput[counter]); /* takes the message from the input file, individually 
+                                                        assigning the letter to each array element for the 
+        }                                               length that the user inputed*/
+       
         char input[length];
         for(int counter = 0 ; counter < length ; counter ++){
         
