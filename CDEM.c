@@ -12,17 +12,17 @@ int main(){
     if(Input == NULL){
         perror("fopen()");
         return 1;
-    }
+    }4
     //User interface that takes in the length of the message aswell as the users option of code
     //The user is made to imput the length
-    //RC cant account for elements that arnt letters
+    //RC cant account for elements that arn't letters
     //RC need only upper case letter input
     printf("Welcome to the cipher decoding/encoding machine(CDEM). (All inputed code must be UPPER CASE)\n");
-    printf("Please enter the length of the message you wish to utalise in the CDEM (length = total count or elements):\n");
+    printf("Please enter the length of the message you wish to utalise in the CDEM (length = total count of elements):\n");
     scanf("%d", &length);
     printf("The length of the message is %d elements long.\n", length);
     printf("To conduct the following options, please enter the coresponding number for the option:\n\n");
-    printf("Rotaional Cipher Decryption ===> 1                    (Requires encrypted code to be inputed)\n\n");
+    printf("Rotaional Cipher Decryption ===> 1                    (Requires encrypted code to be inputed without any elements that are not considered uppercase letters)\n\n");
     printf("Rotaional Cipher Encryption ===> 2                    (Requires input of desired shift and message to be coded)\n\n");
     printf("Substitution Cipher Decryption ===> 3                 (Requires encrypted code and key to be inputed)\n\n");
     printf("Substitution Cipher Encryption ===> 4                 (Requires message and key to be inputed)\n\n");
@@ -50,7 +50,7 @@ int main(){
         }
     
         char ASCIIvalues[length];
-        /*just making sure that the array is in int for so that the ASCII values can be used*/
+        /*just making sure that the array is in 'int' for so that the ASCII values can be used*/
         for(int counter = 0 ; counter < length ; counter ++){
         
         ASCIIvalues[counter] = (int)input[counter]; 
